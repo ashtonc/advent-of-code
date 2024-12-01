@@ -1,0 +1,18 @@
+cache-dir = "~/.cache/ruff"
+
+[format]
+line-ending = "lf"
+skip-magic-trailing-comma = true
+
+[lint]
+select = ["ALL"]
+ignore = ["INP001", "D100", "D103", "T201", "E501", "N999", "D203", "D212", "COM812", "PLR0913", "ISC001", "TD", "FIX"]
+fixable = ["I001"]
+unfixable = []
+
+[lint.isort]
+split-on-trailing-comma = false
+extra-standard-library = ["tomllib"]
+
+[lint.flake8-annotations]
+ignore-fully-untyped = true
