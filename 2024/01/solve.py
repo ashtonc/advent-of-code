@@ -1,7 +1,10 @@
 from pathlib import Path
 
 
-def parse(uinput):
+def parse(path):
+    with Path(path).open() as f:
+        uinput = f.read()
+
     left = []
     right = []
     for row in uinput.splitlines():
@@ -11,8 +14,8 @@ def parse(uinput):
     return (sorted(left), sorted(right))
 
 
-def p1(uinput):
-    left, right = parse(uinput)
+def p1(path):
+    left, right = parse(path)
 
     diff = 0
     for i in range(len(left)):
@@ -21,8 +24,8 @@ def p1(uinput):
     return diff
 
 
-def p2(uinput):
-    left, right = parse(uinput)
+def p2(path):
+    left, right = parse(path)
 
     similarity = 0
     for i in set(left):
@@ -31,16 +34,10 @@ def p2(uinput):
     return similarity
 
 
-with Path("example.txt").open() as f:
-    example_input = f.read()
-
-with Path("input.txt").open() as f:
-    puzzle_input = f.read()
-
 print("Example")
-print(f"  Part 1: {p1(example_input)}")
-print(f"  Part 2: {p2(example_input)}")
+print(f"  Part 1: {p1('example.txt')}")
+print(f"  Part 2: {p2('example.txt')}")
 
 print("\nPuzzle Input")
-print(f"  Part 1: {p1(puzzle_input)}")
-print(f"  Part 2: {p2(puzzle_input)}")
+print(f"  Part 1: {p1('input.txt')}")
+print(f"  Part 2: {p2('input.txt')}")
